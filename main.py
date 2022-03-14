@@ -18,7 +18,6 @@ def index():
     db_session.global_init('db/blogs.sqlite')
     session = db_session.create_session()
     jobs = session.query(Jobs).all()
-    print(jobs[0])
     return render_template("index.html", jobs=jobs)
 
 

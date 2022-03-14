@@ -1,11 +1,12 @@
 {% extends "base.html" %}
 
 {% block content %}
+<h3 style="text-align: center">Works log</h3>
 {% for item in jobs%}
 <h2>Action #{{ loop.index }}</h2>
 <div class="col-md6 border rounded">
-    <table class="table table-bordered border-primary">
-        <tr>
+    <table class="table table-bordered">
+        <tr class="table-secondary">
             <th>Title of activity</th>
             <th>Team leader</th>
             <th>Duration</th>
@@ -13,11 +14,15 @@
             <th>Is finished</th>
         </tr>
         <tr>
-            <td>{{  item.job  }}</td>
-            <td>{{  item.team_leader  }}</td>
-            <td>{{  item.duration  }}</td>
-            <td>{{  item.collaborators  }}</td>
-            <td>{{  item.is_finished  }}</td>
+            <td class="table-primary">{{ item.job }}</td>
+            <td class="table-primary">{{ item.team_leader }}</td>
+            <td class="table-primary">{{ item.work_size }}</td>
+            <td class="table-primary">{{ item.collaborators }}</td>
+            {% if item.is_finished == True %}
+            <td class="table-danger">Is finished</td>
+            {% else %}
+            <td class="table-danger">Is not finished</td>
+            {% endif %}
         </tr>
     </table>
 </div>
